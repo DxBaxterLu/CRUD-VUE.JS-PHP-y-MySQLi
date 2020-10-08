@@ -70,7 +70,7 @@
                                 <td>DxBaxterLu@maildrop.cc</td>
                                 <td>123456789</td>
                                 <td><a href="#" class="text-success" @click="showEditModal=true"><i class="fas fa-edit"></i></a></td>
-                                <td><a href="#" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                <td><a href="#" class="text-danger" @click="showDeleteModal=true"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
 
                             <tr class="text-center">
@@ -79,7 +79,7 @@
                                 <td>DxBaxterLu@maildrop.cc</td>
                                 <td>123456789</td>
                                 <td><a href="#" class="text-success" @click="showEditModal=true"><i class="fas fa-edit"></i></a></td>
-                                <td><a href="#" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                <td><a href="#" class="text-danger" @click="showDeleteModal=true"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             
                         </tbody>
@@ -120,7 +120,7 @@
             </div>
         </div>
 
-        <!-- Edit New User -->
+        <!-- Edit User -->
         <div id="overlay" v-if="showEditModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -152,6 +152,28 @@
             </div>
         </div>
 
+        <!-- Delete User -->
+        <div id="overlay" v-if="showDeleteModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete User</h5>
+                        <button type="button" class="close" @click="showDeleteModal=false">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <h4 class="text-danger">Are you sure want to delete this user?</h4>
+                        <h5>You are deleting this user</h5>
+                        <hr>
+                        <button class="btn btn-success btn-lg">Yes</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-danger btn-lg">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
@@ -161,7 +183,8 @@
                 errorMsg: false,
                 successMsg: false,
                 showAddModal: false,
-                showEditModal: false
+                showEditModal: false,
+                showDeleteModal: false
             }
         })
     </script>
