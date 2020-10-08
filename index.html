@@ -7,7 +7,16 @@
     <title>CRUD - Vue js, Php, MySQLi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+    <style type="text/css">
+        #overlay{
+            position:fixed;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            background: rgba(0,0,0,0.6);
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -80,7 +89,7 @@
         </div>
 
         <!-- Add New User -->
-        <div id="overlay">
+        <div id="overlay" v-if="showAddModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -89,12 +98,39 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <div class="modal-body p-4">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control form-control-lg" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control form-control-lg" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="pwd" name="password" class="form-control form-control-lg" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-info btn-block btn-lg">
+                                    Add User
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                errorMsg: false,
+                successMsg: false,
+                showAddModal: false
+            }
+        })
+    </script>
 </body>
 </html>
